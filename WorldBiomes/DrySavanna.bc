@@ -8,13 +8,13 @@
 # This should be the value of the biomeConfig you wish to extend.
 # The extended config will be loaded, at which point the configs included below
 # will overwrite any configs loaded from the extended config.
-BiomeExtends: 
+BiomeExtends:
 
 # When set to true, all resources of the parent biome (if any) will be copied
 # to the resources queue of this biome. If a resource in the parent biome looks
 # very similar to that of a child biome (for example, two ores of the same type)
 # it won't be copied.
-ResourceInheritance: true
+ResourceInheritance: false
 
 
 #######################################################################
@@ -25,11 +25,14 @@ ResourceInheritance: true
 
 # Biome size from 0 to GenerationDepth. Defines in which biome layer this biome will be generated (see GenerationDepth).
 # Higher numbers give a smaller biome, lower numbers a larger biome.
-# Note: only applies to biomes spawned as part of a BiomeGroup (see WorldConfig).
-# For biomes spawned as isles, borders or rivers other settings are available.
-# Isle biomes:   BiomeSizeWhenIsle (see below)
-# Border biomes: BiomeSizeWhenBorder (see below)
-# River biomes:  RiverSize (see WorldConfig)
+# How this setting is used depends on the value of BiomeMode in the WorldConfig.
+# It will be used for:
+# - normal biomes, ice biomes, isle biomes and border biomes when BiomeMode is set to BeforeGroups
+# - biomes spawned as part of a BiomeGroup when BiomeMode is set to Normal.
+#   For biomes spawned as isles, borders or rivers other settings are available.
+#   Isle biomes:   BiomeSizeWhenIsle (see below)
+#   Border biomes: BiomeSizeWhenBorder (see below)
+#   River biomes:  RiverSize (see WorldConfig)
 BiomeSize: 9
 
 # Biome rarity from 100 to 1. If this is normal or ice biome - chance for spawn this biome then others.
@@ -58,15 +61,15 @@ ReplaceToBiomeName: Savanna
 
 # List of biomes in which this biome will spawn as an isle.
 # For example, Mushroom Isles spawn inside the Ocean biome.
-IsleInBiome: 
+IsleInBiome:
 
-# Size of this biome when spawned as an ilse biome.
+# Size of this biome when spawned as an isle biome in BiomeMode: Normal.
 # Valid values range from 0 to GenerationDepth.
 # Larger numbers give *smaller* islands. The biome must be smaller than the biome it's going
 # to spawn in, so the BiomeSizeWhenIsle number must be larger than the BiomeSize of the other biome.
 BiomeSizeWhenIsle: 9
 
-# Rarity of this biome when spawned as an ilse biome.
+# Rarity of this biome when spawned as an isle biome in BiomeMode: Normal.
 BiomeRarityWhenIsle: 95
 
 ######################
@@ -85,7 +88,7 @@ BiomeIsBorder: Desert M, DesertHills, DesertSmall, DesertRed
 # For example, the Beach biome will never spawn next to an Extreme Hills biome.
 NotBorderNear: DesertMountain, DesertOasis, DesertOasisBorder, RiverTropical, Mesa, RedMountain, Ocean, Beach
 
-# Size of this biome when spawned as a border biome.
+# Size of this biome when spawned as a border biome in BiomeMode: Normal.
 # Valid values range from 0 to GenerationDepth.
 # Larger numbers give *smaller* borders. The biome must be smaller than the biome it's going
 # to spawn in, so the BiomeSizeWhenBorder number must be larger than the BiomeSize of the other biome.
@@ -116,7 +119,7 @@ SmoothRadius: 6
 # If the value is less than 0, then it will cause the terrain to either increase to a lower height before leveling out or decrease in height if the value is a large enough negative.
 MaxAverageHeight: 0.0
 
-# If this value is greater than 0, then it will affect how much, on average, the terrain (usually at the ottom of the ocean) will fall before leveling off when it begins to decrease in elevation. 
+# If this value is greater than 0, then it will affect how much, on average, the terrain (usually at the ottom of the ocean) will fall before leveling off when it begins to decrease in elevation.
 # If the value is less than 0, then it will cause the terrain to either fall to a lesser depth before leveling out or increase in height if the value is a large enough negative.
 MaxAverageDepth: 0.0
 
@@ -138,8 +141,8 @@ DisableBiomeHeight: true
 # blocks height, starting at the bottom of the world. Positive entry - larger chance of spawn blocks, negative - smaller
 # Values which affect your configuration may be found only experimentally. Values may be very big, like ~3000.0 depends from height
 # Example:
-#   CustomHeightControl:0.0,-2500.0,0.0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-# Makes empty layer above bedrock layer. 
+#   CustomHeightControl: -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0
+# Makes empty layer above bedrock layer.
 CustomHeightControl: -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0
 
 
@@ -159,7 +162,7 @@ CustomHeightControl: -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048
 
 # Only available when ImprovedRivers is set to false in the WorldConfig.
 # Sets which biome is used as the river biome.
-RiverBiome: RiverSavanna
+RiverBiome: 
 
 #######################
 # ImprovedRivers:true #
@@ -175,7 +178,7 @@ RiverVolatility: -0.01
 
 # Works the same as WaterLevelMax (scroll down), but is used where a river is generated in this biome
 # Can be used to create elevated rivers
-RiverWaterLevel: 52
+RiverWaterLevel: 0
 
 # Works the same as CustomHeightControl (scroll up), but is used where a river is generated in this biome
 RiverCustomHeightControl: -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0, -2048.0
@@ -209,12 +212,12 @@ GroundBlock: AIR
 
 # Alternatively, you can use Mesa, MesaForest or MesaBryce to get blocks
 # like the blocks found in the Mesa biomes.
-SurfaceAndGroundControl: 
+SurfaceAndGroundControl:
 
 # Replace Variable: (blockFrom,blockTo[:blockDataTo][,minHeight,maxHeight])
 # Example :
 #   ReplacedBlocks: (GRASS,DIRT,100,127),(GRAVEL,GLASS)
-# Replace grass block to dirt from 100 to 127 height and replace gravel to glass on all height 
+# Replace grass block to dirt from 100 to 127 height and replace gravel to glass on all height
 ReplacedBlocks: None
 
 ################################
@@ -318,7 +321,7 @@ FoliageColorIsMultiplier: true
 # Frequency:      number of attempts to place this resource in each chunk.
 # Rarity:         chance for each attempt, Rarity:100 - mean 100% to pass, Rarity:1 - mean 1% to pass.
 # MinAltitude and MaxAltitude: height limits.
-# BlockSource:    mean where or whereupon resource will be placed 
+# BlockSource:    mean where or whereupon resource will be placed
 # TreeType:       Tree (original oak tree) - BigTree - Birch - TallBirch - SwampTree -
 #                 HugeMushroom (randomly red or brown) - HugeRedMushroom - HugeBrownMushroom -
 #                 Taiga1 - Taiga2 - HugeTaiga1 - HugeTaiga2 -
@@ -342,39 +345,35 @@ FoliageColorIsMultiplier: true
 # Vein resource: not in vanilla. Starts an area where ores will spawn. Can be slow, so use a low Rarity (smaller than 1).
 # CustomStructure resource: starts a BO3 structure in the chunk.
 
-CustomStructure(island_large,1.5,island_medium,1.0,island_small,0.75,island_tiny,4.0,LargeCave1,0.5,GravelOreT1,1.0,RedbrickHouseBranching,0.1,ugcamp,0.1)
-CustomObject(floating_boulder_1,floating_boulder_2,floating_boulder_3,floating_boulder_4,floating_boulder_5,floating_boulder_6,floating_boulder_7,floating_boulder_8,floating_boulder_9,floating_boulder_10,floating_boulder_11,floating_boulder_12,floating_boulder_13,floating_boulder_14)
-CustomObject(floating_shards_1,floating_shards_2,floating_shards_3,floating_shards_4)
-Vein(COAL_ORE,10,30,75.0,12,18,75,0,250,STONE,DIRT,HARD_CLAY)
-Vein(IRON_ORE,10,30,66.0,12,18,66,0,250,STONE,DIRT,HARD_CLAY)
-Vein(GOLD_ORE,10,30,50.0,8,14,66,0,250,STONE,HARD_CLAY)
-Vein(REDSTONE_ORE,10,30,50.0,8,18,66,0,250,STONE,HARD_CLAY)
-Vein(LAPIS_ORE,10,30,50.0,8,12,66,0,250,STONE,HARD_CLAY)
-Vein(DIAMOND_ORE,10,20,66.0,4,12,66,0,250)
-Vein(EMERALD_ORE,10,20,66.0,4,12,66,0,250)
-Ore(DIRT,32,20,50.0,0,250,STONE,HARD_CLAY)
+CustomStructure(island_large,1.5,island_medium,1.0,island_small,0.75,island_tiny,4.0,fragment,30.0,GravelOreT1,1.0,RedbrickHouseBranching,0.1)
+Vein(COAL_ORE,10,30,100.0,12,18,75,0,255,STONE,DIRT,HARD_CLAY)
+Vein(IRON_ORE,10,30,70.0,12,18,66,0,255,STONE,DIRT,HARD_CLAY)
+Vein(GOLD_ORE,10,30,50.0,8,14,66,0,255,STONE,HARD_CLAY)
+Vein(REDSTONE_ORE,10,30,50.0,8,18,66,0,255,STONE,HARD_CLAY)
+Vein(LAPIS_ORE,10,30,50.0,8,12,66,0,255,STONE,HARD_CLAY)
+Vein(DIAMOND_ORE,10,20,33.0,4,12,66,0,255,STONE)
+Vein(EMERALD_ORE,10,20,33.0,4,12,66,0,255,STONE)
 Ore(CLAY,8,10,50.0,0,250,STONE,HARD_CLAY)
-Ore(COAL_ORE,12,15,70.0,0,250,STONE,DIRT,HARD_CLAY)
-Ore(IRON_ORE,8,15,70.0,0,250,STONE,DIRT,HARD_CLAY)
+Ore(COAL_ORE,12,15,100.0,0,250,STONE,DIRT,HARD_CLAY)
+Ore(IRON_ORE,8,15,80.0,0,250,STONE,DIRT,HARD_CLAY)
 Ore(GOLD_ORE,8,6,70.0,0,250,STONE,HARD_CLAY)
 Ore(REDSTONE_ORE,8,8,70.0,0,250,STONE,HARD_CLAY)
 Ore(DIAMOND_ORE,8,4,70.0,0,250,STONE)
 Ore(LAPIS_ORE,8,8,70.0,0,250,STONE,HARD_CLAY)
 Ore(EMERALD_ORE,8,4,70.0,0,250,STONE)
-Ore(STONE:5,32,20,100.0,0,58,STONE)
-Ore(STONE:3,32,20,100.0,0,58,STONE)
-Ore(STONE:1,32,20,100.0,0,58,STONE)
-CustomObject(SmallLake1,SmallLake2,SmallLake3,SmallLake4,SmallLake5,SmallLake6,SmallLake7,SmallLake8,SmallLake9,SmallLake10,SmallLake11,SmallLake12)
-CustomObject(plainsrock4,plainsrock3,plainsrock2,plainsrock1,boulder9,boulder8,boulder7,boulder6,boulder5,boulder4,boulder3,boulder2,boulder1)
+Ore(STONE:5,32,20,100.0,0,255,STONE)
+Ore(STONE:3,32,20,100.0,0,255,STONE)
+Ore(STONE:1,32,20,100.0,0,255,STONE)
+SmallLake(WATER,5,7.5,16,240)
 CustomObject(AcaciaSavanna9,AcaciaSavanna8,AcaciaSavanna7,AcaciaSavanna6,AcaciaSavanna5,AcaciaSavanna4,AcaciaSavanna3,AcaciaSavanna2,AcaciaSavanna18,AcaciaSavanna17,AcaciaSavanna16,AcaciaSavanna15,AcaciaSavanna14,AcaciaSavanna13,AcaciaSavanna12,AcaciaSavanna11,AcaciaSavanna10,AcaciaSavanna1)
 CustomObject(BigStoneRock3,BigStoneRock2,BigStoneRock1)
 Tree(1,Acacia,50,Tree,100)
 Boulder(STONE,2,10.0,60,100,GRASS)
 Boulder(SAND,2,10.0,60,100,GRASS)
-Liquid(WATER,85,100.0,8,128,STONE)
-Liquid(LAVA,85,100.0,8,128,STONE)
-Grass(LONG_GRASS,Grouped,10,50.0,GRASS,DIRT)
-Plant(LargeFern,5,100.0,30,128,GRASS,DIRT)
+CustomObject(flowing_water)
+CustomObject(flowing_lava)
+Plant(LONG_GRASS,10,50.0,12,250,GRASS,DIRT)
+Plant(LargeFern,5,100.0,12,250,GRASS,DIRT)
 
 #######################################################################
 # +-----------------------------------------------------------------+ #
@@ -401,7 +400,7 @@ Plant(LargeFern,5,100.0,30,128,GRASS,DIRT)
 #######################################################################
 
 # These objects will spawn when using the UseBiome keyword.
-BiomeObjects: 
+BiomeObjects:
 
 
 #######################################################################
@@ -415,7 +414,7 @@ BiomeObjects:
 # regardless of these settings.
 # Disables strongholds for this biome. If there is no suitable biome nearby,
 # Minecraft will ignore this setting.
-StrongholdsEnabled: true
+StrongholdsEnabled: false
 
 # Whether an Ocean Monument can be placed in this biome.
 OceanMonumentsEnabled: false
@@ -424,13 +423,13 @@ OceanMonumentsEnabled: false
 NetherFortressesEnabled: false
 
 # The village type in this biome. Can be wood, sandstone or disabled.
-VillageType: wood
+VillageType: disabled
 
 # The mineshaft type in this biome. Can be normal, mesa or disabled.
-MineshaftType: normal
+MineshaftType: disabled
 
 # The mineshaft rarity from 0 to 100. 0 = no mineshafts, 1 = default rarity, 100 = a wooden chaos.
-# Note that mineshafts will never spawn, regardless of this setting, if 
+# Note that mineshafts will never spawn, regardless of this setting, if
 # MineshaftType was set to disabled
 MineshaftRarity: 0.3
 
@@ -478,9 +477,5 @@ SpawnWaterCreatures: [{"mob": "Squid", "weight": 10, "min": 4, "max": 4}]
 
 # The ambient creatures (only bats in vanila) that spawn in this biome
 SpawnAmbientCreatures: [{"mob": "Bat", "weight": 10, "min": 8, "max": 8}]
-
-
-
-
 
 

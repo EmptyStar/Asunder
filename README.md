@@ -6,7 +6,7 @@ This project is a modified version of MC_Pitman's [Biome Bundle](https://sites.g
 Installation
 ------------
 
-This project contains both custom biomes and custom objects that must be copied to their respective locations for your world. The [CustomBiomes folder](https://github.com/EmptyStar/Asunder/blob/master/CustomBiomes) should replace the CustomBiomes folder of your world, and the [CustomObjects folder](https://github.com/EmptyStar/Asunder/blob/master/CustomObjects) should replace the CustomObjects folder of your world. Note that copying the folders in their entirety will overwrite any existing biomes and objects for your world, so be careful not to overwrite any existing folders that may contain data that you want to preserve.
+This project contains both custom biomes and custom objects that must be copied to their respective locations for your world. The [CustomBiomes folder](https://github.com/EmptyStar/Asunder/blob/master/CustomBiomes) should replace the CustomBiomes folder of your world, and the [CustomObjects folder](https://github.com/EmptyStar/Asunder/blob/master/CustomObjects) should replace the CustomObjects folder of your world. Note that copying the folders in their entirety will overwrite any existing biomes and objects for your world, so be careful not to overwrite any existing files or folders that may contain data that you want to preserve. If you must preserve existing biomes or objects, then you may want to copy items from Asunder to your world folders individually.
 
 Terrain
 -------
@@ -21,9 +21,6 @@ Known Issues
 Known issues for the current version of Asunder are listed below.
 
  * Islands may overlap in strange configurations
- * `Grass` resources are not appropriate in most cases because islands are often stacked vertically
- * Floating boulders are mostly just edge boulders
- * Some biome-specific BO3's spawn in very unappealing formations
 
 If you would like to contribute fixes for any of these issues, pull requests are welcome. For any reported issues, screenshots and the output of the `/tc biome` command would be extremely helpful.
 
