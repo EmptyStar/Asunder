@@ -6,7 +6,7 @@ This project is a modified version of MC_Pitman's [Biome Bundle](https://sites.g
 Installation
 ------------
 
-This project contains both custom biomes and custom objects that must be copied to their respective locations for your world. The [CustomBiomes folder](https://github.com/EmptyStar/Asunder/blob/master/CustomBiomes) should replace the CustomBiomes folder of your world, and the [CustomObjects folder](https://github.com/EmptyStar/Asunder/blob/master/CustomObjects) should replace the CustomObjects folder of your world. Note that copying the folders in their entirety will overwrite any existing biomes and objects for your world, so be careful not to overwrite any existing files or folders that may contain data that you want to preserve. If you must preserve existing biomes or objects, then you may want to copy items from Asunder to your world folders individually.
+This project contains custom biomes, custom objects, and a WorldConfig.ini that must be copied to their respective locations for your world. The [CustomBiomes folder](https://github.com/EmptyStar/Asunder/blob/master/CustomBiomes) should replace the CustomBiomes folder of your world, and the [CustomObjects folder](https://github.com/EmptyStar/Asunder/blob/master/CustomObjects) should replace the CustomObjects folder of your world. Note that copying the files and folders in their entirety will overwrite any existing biomes and objects for your world, so be careful not to overwrite any existing files or folders that may contain data that you want to preserve. If you must preserve existing biomes or objects, then you may want to copy items from Asunder to your world folders individually.
 
 Terrain
 -------

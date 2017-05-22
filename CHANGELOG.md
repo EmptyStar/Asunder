@@ -3,6 +3,11 @@ Changelog
 
 This file contains information about changes made in each version of this project.
 
+v1.1
+----
+
+ * Added WorldConfig.ini
+
 v1.0
 ----
 
