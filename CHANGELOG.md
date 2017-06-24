@@ -3,6 +3,16 @@ Changelog
 
 This file contains information about changes made in each version of this project.
 
+v1.2
+----
+
+ * Added workaround for flowing liquids which eliminates the need for command blocks
+ * Removed liquid BO3 and NBT files which are no longer needed
+ * Increased the frequency of floating fragments
+ * Made all ores more common
+ * Moved "useful" `Ore` and `Vein` resources (coal, iron, diamond, etc.) to the bottom of the resource queue in order to make them more common on the terrain's surface
+ * Removed all `(AIR,WATER,*,*)` from `ReplacedBlocks` settings (which mostly affects river biomes)
+
 v1.1
 ----
 
